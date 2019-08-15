@@ -1,3 +1,0 @@
- 
-rspec -fd
-rspec -tag @<nome da tag>
