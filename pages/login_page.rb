@@ -25,7 +25,14 @@ class LoginPage < SitePrism::Page
     def insere_email_invalido(email_invalido, senha_usuario)
         email.set email_invalido
         senha.set senha_usuario 
-    end    
+    end 
+    
+    def show_authentication_user()
+        sleep 0.1
+        js_script = 'return window.localStorage.getItem("default_auth_token");'
+        token = page.execute_script(js_script)
+        expect(token.length).to be 147
+    end
         
 
     def clica_no_botao_ENTRAR()

@@ -19,11 +19,7 @@ describe 'Realizar Login', :login do
         it 'com sucesso' do
             @user.insere_os_dados(email_usuario, senha_usuario)
             @user.clica_no_botao_ENTRAR()
-            sleep 3
-            js_script = 'return window.localStorage.getItem("default_auth_token");'
-            token = page.execute_script(js_script)
-            expect(token.length).to be 147
-        
+            @user.show_authentication_user()
         end
         
         it 'com campos em branco' do
