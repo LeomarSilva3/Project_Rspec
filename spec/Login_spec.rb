@@ -1,11 +1,13 @@
 
 require_relative "../pages/login_page.rb"
+require_relative "../pages/views/sidebar_page.rb"
 
 describe 'Realizar Login', :login do
            
         before(:each) do
           visit '/?pg=login'
-          @user = LoginPage.new
+          @login_page = LoginPage.new
+          @sidebar_page = SidebarPage.new
         end    
         
         # Base de dados para teste
@@ -18,19 +20,20 @@ describe 'Realizar Login', :login do
             dados_invalidos = 'Usuário e/ou senha inválidos'
             senha_branco = ''
             email_branco = ''
+            usuario = 'Tony Stark'
 
         it 'com sucesso' do
-            @user.insere_os_dados(email_usuario, senha_usuario)
-            @user.clica_no_botao_ENTRAR()
-            @user.show_authentication_user()
+            @login_page.insere_os_dados(email_usuario, senha_usuario)
+            @login_page.clica_no_botao_ENTRAR()
+            @login_page.show_authentication_user()
+            expect(@sidebar_page.user_authenticated).to eql usuario
         end
         
         it 'com campos em branco' do
             begin
-                @user.insere_usuario_senha_em_brancos(email_branco, senha_branco)
-                @user.clica_no_botao_ENTRAR()
-                message = find('.alert span');
-                expect(message.text).to eql msg_email
+                @login_page.insere_usuario_senha_em_brancos(email_branco, senha_branco)
+                @login_page.clica_no_botao_ENTRAR()
+                expect(@login_page.alert).to eql msg_email
             rescue Error => e
                 puts e.message
             end    
@@ -38,10 +41,9 @@ describe 'Realizar Login', :login do
 
         it 'com senha em branco' do
             begin
-                @user.insere_usuario_senha_em_brancos(email_usuario, senha_branco)
-                @user.clica_no_botao_ENTRAR()
-                message = find('.alert span');
-                expect(message.text).to eql msg_senha
+                @login_page.insere_usuario_senha_em_brancos(email_usuario, senha_branco)
+                @login_page.clica_no_botao_ENTRAR()
+                expect(@login_page.alert).to eql msg_senha
             rescue Error => e
                 puts e.message
             end    
@@ -53,8 +55,7 @@ describe 'Realizar Login', :login do
             begin
                 @user.insere_email_invalido(email_invalido, senha_usuario)
                 @user.clica_no_botao_ENTRAR()
-                message = find('.alert span');
-                expect(message.text).to eql dados_invalidos
+                expect(@login_page.alert).to eql dados_invalidos
             rescue Error => e
                 puts e.message
             end     

@@ -25,7 +25,11 @@ class LoginPage < SitePrism::Page
     def insere_email_invalido(email_invalido, senha_usuario)
         email.set email_invalido
         senha.set senha_usuario 
-    end 
+    end
+    
+    def alert()
+        find('.alert span').text
+    end
     
     def show_authentication_user()
         sleep 0.1

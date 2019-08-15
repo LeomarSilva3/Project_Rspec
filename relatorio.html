@@ -283,17 +283,53 @@ a {
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">Realizar Login</dt>
     <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">com sucesso</span><span class='duration'>4.35039s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">com sucesso</span><span class='duration'>3.50426s</span></dd>
     <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">com campos em branco</span><span class='duration'>1.41895s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">com campos em branco</span><span class='duration'>1.39518s</span></dd>
     <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">com senha em branco</span><span class='duration'>1.16570s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">com senha em branco</span><span class='duration'>1.74213s</span></dd>
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_1');</script>
+    <script type="text/javascript">makeRed('example_group_1');</script>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">com email invalido</span><span class='duration'>1.63719s</span></dd>
+    <dd class="example failed">
+      <span class="failed_spec_name">com email invalido</span>
+      <span class="duration">0.83931s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>  Failure/Error:
+    rescue Error =&gt; e
+        puts e.message
+
+  NameError:
+    uninitialized constant Error
+    Did you mean?  IOError
+                   Errno
+  # ./spec/Login_spec.rb:59:in `rescue in block (2 levels) in &lt;top (required)&gt;&#39;
+  # ./spec/Login_spec.rb:55:in `block (2 levels) in &lt;top (required)&gt;&#39;
+  # ------------------
+  # --- Caused by: ---
+  # NoMethodError:
+  #   undefined method `insere_email_invalido&#39; for nil:NilClass
+  #   ./spec/Login_spec.rb:56:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>./spec/Login_spec.rb:59:in `rescue in block (2 levels) in &lt;top (required)&gt;&#39;
+./spec/Login_spec.rb:55:in `block (2 levels) in &lt;top (required)&gt;&#39;
+------------------
+--- Caused by: ---
+NoMethodError:
+  undefined method `insere_email_invalido&#39; for nil:NilClass
+  ./spec/Login_spec.rb:56:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">57</span>                @user.clica_no_botao_ENTRAR()
+<span class="linenum">58</span>                expect(@login_page.alert).to eql dados_invalidos
+<span class="offending"><span class="linenum">59</span>            rescue Error => e</span>
+<span class="linenum">60</span>                puts e.message
+<span class="linenum">61</span>            end     
+<span class="linenum">62</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+      </div>
+    </dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>8.58149 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "4 examples, 0 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>7.61205 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "4 examples, 1 failure";</script>
 </div>
 </div>
 </body>
