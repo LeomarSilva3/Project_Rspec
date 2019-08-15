@@ -53,8 +53,8 @@ describe 'Realizar Login', :login do
         it 'com email invalido' do
 
             begin
-                @user.insere_email_invalido(email_invalido, senha_usuario)
-                @user.clica_no_botao_ENTRAR()
+                @login_page.insere_email_invalido(email_invalido, senha_usuario)
+                @login_page.clica_no_botao_ENTRAR()
                 expect(@login_page.alert).to eql dados_invalidos
             rescue Error => e
                 puts e.message
