@@ -3,7 +3,7 @@ class MoviePage < SitePrism::Page
     include RSpec::Matchers
     include RSpec::Expectations
 
-    element :icone_cadstro, '.nc-simple-add'
+    element :add, '.nc-simple-add'
     element :title, 'input[name=title]'
     element :status, 'input[placeholder=Status]'
     element :value_status, '.el-select-dropdown__item'
@@ -11,28 +11,31 @@ class MoviePage < SitePrism::Page
     element :release_date, 'input[name=title]'
     element :button, ''
     element :upooad_file, ''
+    element :cast, 
 
 
+    def adicionar()
+        add.click
+    end
    
-    def cadastrar_filmes(title, year,release_date,cast)
-
-        title.set filme[title]
+    def cadastrar_filmes(titulo,  ano, data_lancamento,cast)
+        title.set titulo
 
         status.click
-        #value_status (text:filme["status"]).click
+        
 
-        year.set filme[year]
+                
+        year.set ano
 
-        release_date.set filme[release_date]
-        release_date.send_keys :tab
-    
+        release_date.set data_lancamento
+
+
         actor = find('.input-new-tag')
         
-        filme[cast].each do |a|
+        cast.each do |a|
             actor.set a 
             actor.send_keys :tab
-        end
-       
-    end
+        end 
+    end         
 
 end
