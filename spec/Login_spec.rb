@@ -5,7 +5,7 @@ require_relative "../pages/views/sidebar_page.rb"
 describe 'Realizar Login', :login do
            
         before(:each) do
-          visit '/?pg=login'
+          visit '/'
           @login_page = LoginPage.new
           @sidebar_page = SidebarPage.new
         end    

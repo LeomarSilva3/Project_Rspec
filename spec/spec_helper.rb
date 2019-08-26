@@ -6,7 +6,7 @@ require 'site_prism'
 
 RSpec.configure do |config|
   
-  
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -28,10 +28,12 @@ RSpec.configure do |config|
   
 end
 
+
+
 Capybara.configure do |config|
   #config.default_driver = :selenium_chrome_headless
   config.default_driver = :selenium_chrome
   config.default_max_wait_time = 15
-  config.app_host = 'localhost:8080'
+  config.app_host = "localhost:8080/login"
 
 end  
