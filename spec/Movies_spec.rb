@@ -19,15 +19,15 @@ describe 'Cadastrar Filmes', :filmes do
         valorstatus = 'Disponível'
         ano = 2019
         data_lancamento = '24/04/2019'
-        cast = ["Robert Downey Jr", "Chris Evans", "Brian Larson", "Scarlett Johansson"]
-        overview = 'Apos THanos eliminar metade do universo, os vingadores terao que resolver esta treta.'
-        cover = 'ultimato.jpg'
+        atores = ["Robert Downey Jr", "Chris Evans", "Brian Larson", "Scarlett Johansson"]
+        resumo = 'Apos THanos eliminar metade do universo, os vingadores terao que resolver esta treta.'
+        arquivo = 'ultimato.jpg'
 
 
     it 'cadastro de filmes' do
 
-        @movie_page.adicionar()        
-        @movie_page.cadastrar_filmes(titulo, ano, data_lancamento, cast)            
+        @movie_page.click_icon_add()        
+        @movie_page.create_film(titulo, ano, data_lancamento, atores, resumo, arquivo)            
 
     end   
 

@@ -5,3 +5,4 @@ gem 'selenium-webdriver'
 gem 'rspec'
 gem 'cucumber'
 gem 'site_prism'
+gem "os"
