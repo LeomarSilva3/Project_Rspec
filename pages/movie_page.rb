@@ -58,8 +58,17 @@ class MoviePage < SitePrism::Page
 
         upload_file(arquivo)
 
-        
+        add_film
+
+    end
     
-    end         
+
+    def add_film
+       find('#create-movie').click
+    end
+    
+    def alert
+     find('.alert').text
+    end
 
 end
